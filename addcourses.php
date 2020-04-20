@@ -1,6 +1,9 @@
 <?php
 // Start the session
 session_start();
+if(!isset($_SESSION['loggedin'])) {
+header("Location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,70 +22,68 @@ session_start();
     <body>
         <div class="super_container">
 
-        <!-- Header -->
+            <!-- Header -->
 
-        <header class="header d-flex flex-row">
-            <div class="header_content d-flex flex-row align-items-center">
-                <!-- Logo -->
-                <div class="logo_container">
-                    <div class="logo">
-                        <img src="images/logo.png" alt="">
-                        <span>course</span>
+            <header class="header d-flex flex-row">
+                <div class="header_content d-flex flex-row align-items-center">
+                    <!-- Logo -->
+                    <div class="logo_container">
+                        <div class="logo">
+                            <img src="images/logo.png" alt="">
+                            <span>course</span>
+                        </div>
                     </div>
+
+                    <!-- Main Navigation -->
+                    <nav class="main_nav_container">
+                        <div class="main_nav">
+                            <ul class="main_nav_list">
+                                <li class="main_nav_item"><a href="index.php">home</a></li>
+                                <li class="main_nav_item"><a href="#">courses</a></li>
+                                <li class="main_nav_item"><a href="contact.html">contact</a></li>
+                                <li class="main_nav_item"><a href="register.php">Register</a></li>
+                                <li class="main_nav_item"><a href="logout.php">Log Out</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+            <!-- Menu -->
+            <div class="menu_container menu_mm">
+
+                <!-- Menu Close Button -->
+                <div class="menu_close_container">
+                    <div class="menu_close"></div>
                 </div>
 
-                <!-- Main Navigation -->
-                <nav class="main_nav_container">
-                    <div class="main_nav">
-                        <ul class="main_nav_list">
-                            <li class="main_nav_item"><a href="index.php">home</a></li>
-                            <li class="main_nav_item"><a href="#">courses</a></li>
-                            <li class="main_nav_item"><a href="contact.html">contact</a></li>
-                            <li class="main_nav_item"><a href="register.php">Register</a></li>
-                            <li class="main_nav_item"><a href="login.php">Log In</a></li>
+                <!-- Menu Items -->
+                <div class="menu_inner menu_mm">
+                    <div class="menu menu_mm">
+                        <ul class="menu_list menu_mm">
+                            <li class="menu_item menu_mm"><a href="index.html">Home</a></li>
+                            <li class="menu_item menu_mm"><a href="#">About us</a></li>
+                            <li class="menu_item menu_mm"><a href="#">Courses</a></li>
+                            <li class="menu_item menu_mm"><a href="contact.html">Contact</a></li>
                         </ul>
+
+                        <!-- Menu Social -->
+                        
+                        <div class="menu_social_container menu_mm">
+                            <ul class="menu_social menu_mm">
+                                <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                                <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="menu_copyright menu_mm">Colorlib All rights reserved</div>
                     </div>
-                </nav>
-            </div>
-        </header>
-        
-        <!-- Menu -->
-        <div class="menu_container menu_mm">
-
-            <!-- Menu Close Button -->
-            <div class="menu_close_container">
-                <div class="menu_close"></div>
-            </div>
-
-            <!-- Menu Items -->
-            <div class="menu_inner menu_mm">
-                <div class="menu menu_mm">
-                    <ul class="menu_list menu_mm">
-                        <li class="menu_item menu_mm"><a href="index.html">Home</a></li>
-                        <li class="menu_item menu_mm"><a href="#">About us</a></li>
-                        <li class="menu_item menu_mm"><a href="#">Courses</a></li>
-                        <li class="menu_item menu_mm"><a href="contact.html">Contact</a></li>
-                    </ul>
-
-                    <!-- Menu Social -->
-                    
-                    <div class="menu_social_container menu_mm">
-                        <ul class="menu_social menu_mm">
-                            <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                            <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                            <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        </ul>
-                    </div>
-
-                    <div class="menu_copyright menu_mm">Colorlib All rights reserved</div>
                 </div>
-
             </div>
 
-        </div>
-        
         <!-- Home -->
 
         <div class="home">
@@ -90,61 +91,85 @@ session_start();
                 <div class="home_background prlx" style="background-image:url(images/courses_background.jpg)"></div>
             </div>
             <div class="home_content">
-                <h1>Welcome!</h1><br>
-                <h3 style="text-align:center; color:white">Please log in!</h3>
+                <h1>Add Courses</h1><br>
             </div>
         </div><br>
-
         <?
-        if(isset($_SESSION['loggedin'])){
-            header("Location: dashboard.php");
-            }
-        if(isset($_SESSION['messagefail'])) {
-            echo $_SESSION['messagefail'];
-            unset($_SESSION['messagefail']);
+         if(isset($_SESSION['addcoursesuccess'])) {
+            echo $_SESSION['addcoursesuccess'];
+            unset($_SESSION['addcoursesuccess']);
         }
-
+        if(isset($_SESSION['addcoursefail'])) {
+            echo $_SESSION['addcoursefail'];
+            unset($_SESSION['addcoursefail']);
+        }
         ?>
-         <div class="container" style="color:black">
-            <form action="loginprocess.php" method="POST">
+        <div class="container" style="color:black">
+            <div class="table-responsive">
                 <table class="table">
-                    <tr>
-                        <td><div class="form-group"> 
-                            <label for="E-Mail">E-Mail:</label>
-                            <input type="text" class="form-control text-left" id="email" name="email">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><div class="form-group"> 
-                            <label for="Password">Password:</label>
-                            <input type="password" class="form-control text-left" id="password" name="password">
-                        </td>
-                    </tr>     
+                    <tbody> 
+                        <tr class="table-success">
+                            <td><h2>Add Courses:<h2></td>
+                            <td class="table-success"><td>
+                            <td class="table-success"><td>
+                        </tr> 
+                        <tr>
+                            <td><h3>Course Number</h3></td>
+                            <td><h3>Course Name</h3></td>
+                            <td><h3>Cost</h3></td>
+                        </tr>
+                        <?
+                            include '/home/knowledge27/.function.php';
+                            
+                            $sql = "SELECT courses.coursename, courses.cost, courses.course_id
+                            FROM courses
+                            INNER JOIN enrollments  
+                            WHERE enrollments.course_id = courses.course_id AND enrollments.student_id='{$_SESSION['student_id']}'";
+                            
+                            $result = mysqli_query($conn, $sql);
+                           
+                            if (mysqli_num_rows($result) > 0) {
+                            // output data of each row
+                            while($row = mysqli_fetch_assoc($result)) {
+                    
+                        ?>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td><?=$row['course_id'];?></td>
+                            <td><?=$row['coursename'];?></td>
+                            <td>$<?=$row['cost'];?></td>
+                            <td>
+                                <form action="addcourseprocess.php" method="POST">
+                                    <input type="hidden" name="course_id" value="<?=$row['course_id']?>">
+                                    <input type="submit" name="addcourse" value="Add" class="btn btn-success">
+                                </form>
+                            </td>
+                        </tr> 
+                    </tbody>
+                        <?
+                            }
+                            } else {
+                            echo "0 results";
+                            }
+                        ?>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <form action="dashboard.php" method="POST" enctype="multipart/form-data">
+                                    <input type="submit" name="cancel" value="Back to Dashboard" class="btn btn-info">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="logout.php" method="POST">
+                                    <input type="submit" class="btn btn-primary" name="logout" value="Log Out">
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
-                <tr>
-                    <td>
-                        <input type="submit" class="btn btn-primary" style="margin-right:10px" name="login" value="Log In"> 
-                    </td>
-                    <td>
-                        <a href="index.php" class="btn btn-danger" role="button">Cancel</a> 
-                    </td>
-                </tr><br><br>
-                <tr>
-                    <div>
-                        <label><input type="checkbox" checked="checked" name="remember"> Remember Me</label>
-                    </div>
-                    <div>
-                        <span class="psw">Forgot <a href="#">password?</a></span>
-                    </div>
-                <tr>
-            </form>
-        </div><br>
-        <!-- <label for="email"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="email">
-
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password"> -->
-
+            </div>
+        </div><br><br>
         <footer class="footer">
             <div class="container">
                 
@@ -188,9 +213,7 @@ session_start();
                                     <span>course</span>
                                 </div>
                             </div>
-
                             <p class="footer_about_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum, tempor lacus.</p>
-
                         </div>
 
                         <!-- Footer Column - Menu -->
@@ -272,8 +295,6 @@ session_start();
             </div>
 	    </footer>
 
-
-
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="styles/bootstrap4/popper.js"></script>
         <script src="styles/bootstrap4/bootstrap.min.js"></script>
@@ -285,7 +306,6 @@ session_start();
         <script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
         <script src="plugins/easing/easing.js"></script>
         <script src="js/courses_custom.js"></script>
-
 
     </body>
 </html>

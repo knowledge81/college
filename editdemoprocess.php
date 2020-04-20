@@ -20,7 +20,7 @@ $_SESSION['state'] = $_POST['state'];
 $_SESSION['postalcode'] = $_POST['postalcode'];
 $_SESSION['gender'] = $_POST['gender'];
 
-$sql = "UPDATE students SET firstname='{$_SESSION['firstname']}', lastname='{$_SESSION['lastname']}', email='{$_SESSION['email']}', phone='{$_SESSION['phone']}', address='{$_SESSION['address']}', address2='{$_SESSION['address2']}', city='{$_SESSION['city']}', state='{$_SESSION['state']}', postalcode='{$_SESSION['postalcode']}', gender='{$_SESSION['gender']}'
+$sql = "UPDATE college_students SET firstname='{$_SESSION['firstname']}', lastname='{$_SESSION['lastname']}', email='{$_SESSION['email']}', phone='{$_SESSION['phone']}', address='{$_SESSION['address']}', address2='{$_SESSION['address2']}', city='{$_SESSION['city']}', state='{$_SESSION['state']}', postalcode='{$_SESSION['postalcode']}', gender='{$_SESSION['gender']}'
 WHERE student_id='{$_SESSION['student_id']}'";
 
 if (mysqli_query($conn, $sql)) {

@@ -7,17 +7,17 @@ header("Location: login.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Registration</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Course Project">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/courses_styles.css">
-<link rel="stylesheet" type="text/css" href="styles/courses_responsive.css">
-</head>
+    <head>
+    <title>Registration</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Course Project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+    <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="styles/courses_styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/courses_responsive.css">
+    </head>
     
     <body>
         <div class="super_container">
@@ -30,7 +30,7 @@ header("Location: login.php");
                     <div class="logo_container">
                         <div class="logo">
                             <img src="images/logo.png" alt="">
-                            <span>course</span>
+                            <span>Coding University</span>
                         </div>
                     </div>
 
@@ -115,6 +115,14 @@ header("Location: login.php");
             echo $_SESSION['messagefaildrop'];
             unset($_SESSION['messagefaildrop']);
         }
+        if(isset($_SESSION['addcoursesuccess'])) {
+            echo $_SESSION['addcoursesuccess'];
+            unset($_SESSION['addcoursesuccess']);
+        }
+        if(isset($_SESSION['addcoursefail'])) {
+            echo $_SESSION['addcoursefail'];
+            unset($_SESSION['addcoursefail']);
+        }
         
         ?>
         <div class="container" style="color:black">
@@ -132,7 +140,14 @@ header("Location: login.php");
                         <tr><td>Zip Code: <?=$_SESSION['postalcode']?></td></tr>
                         <tr><td>Gender: <?=$_SESSION['gender']?></td></tr>
                         <tr><td>Notes / Special Needs: <?=$_SESSION['comment']?></td></tr>
-                        <tr><td><h2>Registered Courses:<h2></td>
+                        <tr class="table-danger">
+                            <td><h2>Registered Courses:<h2></td>
+                            <td class="table-danger"><td>
+                            <td class="table-danger"><td>
+                        </tr> 
+                        </tr>   
+                        <tr>
+                            <td><h3>Course Number</h3></td>
                             <td><h3>Course Name</h3></td>
                             <td><h3>Cost</h3></td>
                         </tr>
@@ -141,18 +156,17 @@ header("Location: login.php");
                             
                             $_SESSION['tuitionbalance'] = 0;
                            
-                            $sql = "SELECT courses.coursename, courses.cost, courses.course_id
-                            FROM courses
-                            INNER JOIN enrollments  
-                            WHERE enrollments.course_id = courses.course_id AND enrollments.student_id='{$_SESSION['student_id']}'";
+                            $sql = "SELECT college_courses.coursename, college_courses.cost, college_courses.course_id
+                            FROM college_courses
+                            INNER JOIN college_enrollments  
+                            WHERE college_enrollments.course_id = college_courses.course_id AND college_enrollments.student_id='{$_SESSION['student_id']}'";
                             
                             $result = mysqli_query($conn, $sql);
                            
                             if (mysqli_num_rows($result) > 0) {
-                            // output data of each row
-                            while($row = mysqli_fetch_assoc($result)) {
+                                // output data of each row
+                                while($row = mysqli_fetch_assoc($result)) {
                             $_SESSION['tuitionbalance'] = $_SESSION['tuitionbalance'] + $row['cost'];
-                            
                         ?>
                     </tbody>
                     <tbody>
@@ -162,26 +176,61 @@ header("Location: login.php");
                             <td>$<?=$row['cost'];?></td>
                             <td>
                                 <form action="dropcourse.php" method="POST">
-                                <input type="hidden" name="course_id" value="<?=$row['course_id']?>">
-                                <input type="hidden" name="coursename" value="<?=$row['coursename']?>">
-                                <input type="hidden" name="cost" value="<?=$row['cost']?>">
-                                <input type="submit" name="dropcourse" value="Drop" class="btn btn-danger">
+                                    <input type="hidden" name="course_id" value="<?=$row['course_id']?>">
+                                    <input type="submit" name="dropcourse" value="Drop" class="btn btn-danger">
+                                </form>
                             </td>
                         </tr> 
                     </tbody>
-                        <?
+                        <?}?> 
+                    <tbody>
+                        <tr>
+                            <td><h3><strong>Total Tuition:</strong></h3></td>
+                            <td> </td>
+                            <td>$<?echo $_SESSION['tuitionbalance']?></td> 
+                            <td><button type="button" class="btn btn-warning"> Pay </button></td>
+                        </tr>
+                    </tbody>   
+                        <?}?>  
+                    <tbody>
+                        <tr class="table-success">
+                            <td><h2>Add Courses:<h2></td>
+                            <td class="table-success"><td>
+                            <td class="table-success"><td>
+                        </tr> 
+                            <?
+                                $sql = "SELECT course_id, coursename, cost
+                                FROM college_courses
+                                WHERE course_id <> ALL
+                                (SELECT course_id FROM college_enrollments WHERE student_id='{$_SESSION['student_id']}')";;
+                                    
+                                    $result = mysqli_query($conn, $sql);
+                                
+                                    if (mysqli_num_rows($result) > 0) {
+                                    // output data of each row
+                                    while($row = mysqli_fetch_assoc($result)) 
+                                {
+                            ?>
+                        <tr>
+                            <td><?=$row['course_id'];?></td>
+                            <td><?=$row['coursename'];?></td>
+                            <td>$<?=$row['cost'];?></td>
+                            <td>
+                                <form action="addcourseprocess.php" method="POST">
+                                    <input type="hidden" name="course_id" value="<?=$row['course_id']?>">
+                                    <input type="submit" name="addcourse" value="Add" class="btn btn-success">
+                                </form>
+                            </td>
+                        </tr> 
+                    </tbody>
+                    <?
                         }
                         } else {
                         echo "0 results";
                         }
-                    ?>
-                    <tbody>
-                        <tr>
-                            <td>Total:</td>
-                            <td> </td>
-                            <td>$<?echo $_SESSION['tuitionbalance']?></td> 
-                        </tr>
-                    </tbody>         
+                        
+                        
+                    ?>    
                 </table>
             </div>
             <br>
@@ -193,11 +242,11 @@ header("Location: login.php");
                             <input type="submit" name="editdemo" value="Edit Personal Information" class="btn btn-danger">
                         </form>
                     </td>
-                    <td>   
+                    <!-- <td>   
                         <form action="addcourses.php" method="POST" enctype="multipart/form-data">
                             <input type="submit" name="addcourses" value="Add Courses" class="btn btn-info">
                         </form>
-                    </td>
+                    </td> -->
                     <td>
                         <form action="logout.php" method="POST">
                             <input type="submit" class="btn btn-primary" name="logout" value="Log Out">
@@ -249,7 +298,7 @@ header("Location: login.php");
                             <div class="logo_container">
                                 <div class="logo">
                                     <img src="images/logo.png" alt="">
-                                    <span>course</span>
+                                    <span>Coding University</span>
                                 </div>
                             </div>
                             <p class="footer_about_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum, tempor lacus.</p>
@@ -272,7 +321,7 @@ header("Location: login.php");
                         <!-- Footer Column - Usefull Links -->
 
                         <div class="col-lg-3 footer_col">
-                            <div class="footer_column_title">Usefull Links</div>
+                            <div class="footer_column_title">Useful Links</div>
                             <div class="footer_column_content">
                                 <ul>
                                     <li class="footer_list_item"><a href="#">Testimonials</a></li>

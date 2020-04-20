@@ -13,7 +13,7 @@ include '/home/knowledge27/.function.php';
 
 $email = $_POST['email'];   
 $password = md5($_POST['password']);
-$sql = "SELECT * FROM students WHERE email='$email' AND password='$password'";
+$sql = "SELECT * FROM college_students WHERE email='$email' AND password='$password'";
 
 $result = mysqli_query($conn, $sql);
 

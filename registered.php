@@ -119,7 +119,7 @@ include '/home/knowledge27/.function.php';
 		$_SESSION['cost'] = $_POST['cost'];
 		$_SESSION['status'] = $_POST['status'];
 
-		$sql = "SELECT * FROM students WHERE email='{$_SESSION['email']}'";
+		$sql = "SELECT * FROM college_students WHERE email='{$_SESSION['email']}'";
 		
 		$result = $conn->query($sql);
 
@@ -154,9 +154,9 @@ include '/home/knowledge27/.function.php';
 						<?php
 						
 						foreach($_SESSION['course_id'] as $course_id) { 
-							$sql = "SELECT coursename FROM courses WHERE course_id = '{$course_id}'";
+							$sql = "SELECT coursename FROM college_courses WHERE course_id = '{$course_id}'";
 						$result = mysqli_query($conn, $sql);
-						//echo $sql;die;
+					
 
 							if (mysqli_num_rows($result) > 0) {
 								// output data of each row

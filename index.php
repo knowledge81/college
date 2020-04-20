@@ -5,7 +5,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>College</title>
+<title>Coding University</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Course Project">
@@ -699,7 +699,6 @@ session_unset();
 // destroy the session
 session_destroy();
 
-header("Location: index.php");
 ?>
 
 </body>

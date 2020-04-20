@@ -105,7 +105,7 @@ session_start();
 		$firstname = $_SESSION['firstname'];
 		$lastname = $_SESSION['lastname'];
 		
-		$sql = "INSERT INTO students (firstname, lastname, email, phone, address, address2, city, state, postalcode, gender, comment, imagename, password)
+		$sql = "INSERT INTO college_students (firstname, lastname, email, phone, address, address2, city, state, postalcode, gender, comment, imagename, password)
 		VALUES ('{$_SESSION['firstname']}','{$_SESSION['lastname']}','{$_SESSION['email']}','{$_SESSION['phone']}','{$_SESSION['address']}',
 				'{$_SESSION['address2']}','{$_SESSION['city']}','{$_SESSION['state']}','{$_SESSION['postalcode']}','{$_SESSION['gender']}','{$_SESSION['comment']}','{$_SESSION['imagex']}','{$password2}')";
 
@@ -118,7 +118,7 @@ session_start();
 
 		if(!empty($_SESSION['course_id'])) {
 		foreach($_SESSION['course_id'] as $course_id) {
-		$sql2 = "INSERT INTO enrollments (student_id, course_id)
+		$sql2 = "INSERT INTO college_enrollments (student_id, course_id)
 		VALUES ('{$last_id}', '{$course_id}')";
 
 		if (mysqli_query($conn, $sql2)) {

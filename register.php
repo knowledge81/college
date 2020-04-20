@@ -234,7 +234,7 @@ session_start();
 				</tr>
 			</table>
 				<label for="image">Upload Image:</label><br>
-				<input type="file" name="fileToUpload" id="fileToUpload" value="<?if(isset($_SESSION['imagex'])) {include 'upload.php';}?>"><br><br>
+				<input type="file" name="fileToUpload" id="fileToUpload" ><br><br>
 			<br>
 			<h1>Course Catalog</h1>					
 			<!-- <div class="home">
@@ -264,7 +264,7 @@ session_start();
 					<?
 					include '/home/knowledge27/.function.php';
 
-						$sql = "SELECT * FROM courses";
+						$sql = "SELECT * FROM college_courses";
 						$result = mysqli_query($conn, $sql);
 						
 						if (mysqli_num_rows($result) > 0) {
