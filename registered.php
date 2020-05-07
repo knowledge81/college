@@ -141,12 +141,12 @@ include '/home/knowledge27/.function.php';
                     <tr><td>First Name: <?=$_SESSION['firstname']?></td></tr>
                     <tr><td>Last Name: <?=$_SESSION['lastname']?></td></tr>
                     <tr><td>E-Mail: <?=$_SESSION['email']?></td></tr>
-                    <tr><td>Phone Number: <?=$$_SESSION['phone']?></td></tr>
+                    <tr><td>Phone Number: <?=$_SESSION['phone']?></td></tr>
                     <tr><td>Address: <?=$_SESSION['address']?></td></tr>
                     <tr><td>Address 2: <?=$_SESSION['address2']?></td></tr>
                     <tr><td>City: <?=$_SESSION['city']?></td></tr>
                     <tr><td>State: <?=$_SESSION['state']?></td></tr>
-                    <tr><td>Zip Code: <?=$$_SESSION['postalcode']?></td></tr>
+                    <tr><td>Zip Code: <?=$_SESSION['postalcode']?></td></tr>
 					<tr><td>Gender: <?=$_SESSION['gender']?></td></tr>
 					<tr><td>Notes / Special Needs: <?=$_SESSION['comment']?></td></tr>
 					

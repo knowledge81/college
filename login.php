@@ -27,7 +27,7 @@ session_start();
                 <div class="logo_container">
                     <div class="logo">
                         <img src="images/logo.png" alt="">
-                        <span>course</span>
+                        <span>Coding University</span>
                     </div>
                 </div>
 
@@ -37,7 +37,6 @@ session_start();
                         <ul class="main_nav_list">
                             <li class="main_nav_item"><a href="index.php">home</a></li>
                             <li class="main_nav_item"><a href="#">courses</a></li>
-                            <li class="main_nav_item"><a href="contact.html">contact</a></li>
                             <li class="main_nav_item"><a href="register.php">Register</a></li>
                             <li class="main_nav_item"><a href="login.php">Log In</a></li>
                         </ul>

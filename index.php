@@ -30,7 +30,7 @@ session_start();
 			<div class="logo_container">
 				<div class="logo">
 					<img src="images/logo.png" alt="">
-					<span>course</span>
+					<span>Coding University</span>
 				</div>
 			</div>
 
@@ -40,7 +40,6 @@ session_start();
 					<ul class="main_nav_list">
 						<li class="main_nav_item"><a href="index.php">home</a></li>
 						<li class="main_nav_item"><a href="">courses</a></li>
-						<li class="main_nav_item"><a href="contact.html">contact</a></li>
 						<li class="main_nav_item"><a href="register.php">Register</a></li>
 						<li class="main_nav_item"><a href="login.php">Log In</a></li>
 					</ul>
@@ -138,7 +137,7 @@ session_start();
 		<div class="hero_boxes_inner">
 			<div class="container">
 				<div class="row">
-
+					<div class="col-lg-4 hero_box_col"></div>
 					<div class="col-lg-4 hero_box_col">
 						<div class="hero_box d-flex flex-row align-items-center justify-content-start">
 							<img src="images/earth-globe.svg" class="svg" alt="">
@@ -148,27 +147,7 @@ session_start();
 							</div>
 						</div>
 					</div>
-
-					<div class="col-lg-4 hero_box_col">
-						<div class="hero_box d-flex flex-row align-items-center justify-content-start">
-							<img src="images/books.svg" class="svg" alt="">
-							<div class="hero_box_content">
-								<h2 class="hero_box_title">Our Library</h2>
-								<a href="courses.html" class="hero_box_link">view more</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 hero_box_col">
-						<div class="hero_box d-flex flex-row align-items-center justify-content-start">
-							<img src="images/professor.svg" class="svg" alt="">
-							<div class="hero_box_content">
-								<h2 class="hero_box_title">Our Teachers</h2>
-								<a href="teachers.html" class="hero_box_link">view more</a>
-							</div>
-						</div>
-					</div>
-
+					<div class="col-lg-4 hero_box_col"></div>
 				</div>
 			</div>
 		</div>
@@ -200,8 +179,8 @@ session_start();
 							<div class="course_author_image">
 								<img src="images/author.jpg" alt="https://unsplash.com/@mehdizadeh">
 							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
+							<div class="course_author_name">Dr. Stephen Fitzmeyer, <span>Author</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$300</span></div>
 						</div>
 					</div>
 				</div>
@@ -218,8 +197,8 @@ session_start();
 							<div class="course_author_image">
 								<img src="images/author.jpg" alt="https://unsplash.com/@mehdizadeh">
 							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
+							<div class="course_author_name">Dr. Stephen Fitzmeyer, <span>Author</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$300</span></div>
 						</div>
 					</div>
 				</div>
@@ -236,56 +215,13 @@ session_start();
 							<div class="course_author_image">
 								<img src="images/author.jpg" alt="https://unsplash.com/@mehdizadeh">
 							</div>
-							<div class="course_author_name">Michael Smith, <span>Author</span></div>
-							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
+							<div class="course_author_name">Dr. Stephen Fitzmeyer, <span>Author</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$300</span></div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>		
-	</div>
-
-	<!-- Register -->
-
-	<div class="register">
-
-		<div class="container-fluid">
-			
-			<div class="row row-eq-height">
-				<div class="col-lg-6 nopadding">
-					
-					<!-- Register -->
-
-					<div class="register_section d-flex flex-column align-items-center justify-content-center">
-						<div class="register_content text-center">
-							<h1 class="register_title">Register now and get a discount <span>50%</span> discount until 1 January</h1>
-							<p class="register_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum. Aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempo.</p>
-							<div class="button button_1 register_button mx-auto trans_200"><a href="#">register now</a></div>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="col-lg-6 nopadding">
-					
-					<!-- Search -->
-
-					<div class="search_section d-flex flex-column align-items-center justify-content-center">
-						<div class="search_background" style="background-image:url(images/search_background.jpg);"></div>
-						<div class="search_content text-center">
-							<h1 class="search_title">Search for your course</h1>
-							<form id="search_form" class="search_form" action="post">
-								<input id="search_form_name" class="input_field search_form_name" type="text" placeholder="Course Name" required="required" data-error="Course name is required.">
-								<input id="search_form_category" class="input_field search_form_category" type="text" placeholder="Category">
-								<input id="search_form_degree" class="input_field search_form_degree" type="text" placeholder="Degree">
-								<button id="search_submit_button" type="submit" class="search_submit_button trans_200" value="Submit">search course</button>
-							</form>
-						</div> 
-					</div>
-
-				</div>
-			</div>
-		</div>
 	</div>
 
 	<!-- Services -->
@@ -434,147 +370,11 @@ session_start();
 		</div>
 	</div>
 
-	<!-- Events -->
-
-	<div class="events page_section">
-		<div class="container">
-			
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<h1>Upcoming Events</h1>
-					</div>
-				</div>
-			</div>
-			
-			<div class="event_items">
-
-				<!-- Event Item -->
-				<div class="row event_item">
-					<div class="col">
-						<div class="row d-flex flex-row align-items-end">
-
-							<div class="col-lg-2 order-lg-1 order-2">
-								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">07</div>
-									<div class="event_month">January</div>
-								</div>
-							</div>
-
-							<div class="col-lg-6 order-lg-2 order-3">
-								<div class="event_content">
-									<div class="event_name"><a class="trans_200" href="#">Student Festival</a></div>
-									<div class="event_location">Grand Central Park</div>
-									<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor.</p>
-								</div>
-							</div>
-
-							<div class="col-lg-4 order-lg-3 order-1">
-								<div class="event_image">
-									<img src="images/event_1.jpg" alt="https://unsplash.com/@theunsteady5">
-								</div>
-							</div>
-
-						</div>	
-					</div>
-				</div>
-
-				<!-- Event Item -->
-				<div class="row event_item">
-					<div class="col">
-						<div class="row d-flex flex-row align-items-end">
-
-							<div class="col-lg-2 order-lg-1 order-2">
-								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">07</div>
-									<div class="event_month">January</div>
-								</div>
-							</div>
-
-							<div class="col-lg-6 order-lg-2 order-3">
-								<div class="event_content">
-									<div class="event_name"><a class="trans_200" href="#">Open day in the Univesrsity campus</a></div>
-									<div class="event_location">Grand Central Park</div>
-									<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor.</p>
-								</div>
-							</div>
-
-							<div class="col-lg-4 order-lg-3 order-1">
-								<div class="event_image">
-									<img src="images/event_2.jpg" alt="https://unsplash.com/@claybanks1989">
-								</div>
-							</div>
-
-						</div>	
-					</div>
-				</div>
-
-				<!-- Event Item -->
-				<div class="row event_item">
-					<div class="col">
-						<div class="row d-flex flex-row align-items-end">
-
-							<div class="col-lg-2 order-lg-1 order-2">
-								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">07</div>
-									<div class="event_month">January</div>
-								</div>
-							</div>
-
-							<div class="col-lg-6 order-lg-2 order-3">
-								<div class="event_content">
-									<div class="event_name"><a class="trans_200" href="#">Student Graduation Ceremony</a></div>
-									<div class="event_location">Grand Central Park</div>
-									<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor.</p>
-								</div>
-							</div>
-
-							<div class="col-lg-4 order-lg-3 order-1">
-								<div class="event_image">
-									<img src="images/event_3.jpg" alt="https://unsplash.com/@juanmramosjr">
-								</div>
-							</div>
-
-						</div>	
-					</div>
-				</div>
-
-			</div>
-				
-		</div>
-	</div>
-
 	<!-- Footer -->
 
 	<footer class="footer">
 		<div class="container">
 			
-			<!-- Newsletter -->
-
-			<div class="newsletter">
-				<div class="row">
-					<div class="col">
-						<div class="section_title text-center">
-							<h1>Subscribe to newsletter</h1>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col text-center">
-						<div class="newsletter_form_container mx-auto">
-							<form action="post">
-								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
-									<input id="newsletter_email" class="newsletter_email" type="email" placeholder="Email Address" required="required" data-error="Valid email is required.">
-									<button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Subscribe</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
 			<!-- Footer Content -->
 
 			<div class="footer_content">
@@ -610,10 +410,10 @@ session_start();
 						</div>
 					</div>
 
-					<!-- Footer Column - Usefull Links -->
+					<!-- Footer Column - Useful Links -->
 
 					<div class="col-lg-3 footer_col">
-						<div class="footer_column_title">Usefull Links</div>
+						<div class="footer_column_title">Useful Links</div>
 						<div class="footer_column_content">
 							<ul>
 								<li class="footer_list_item"><a href="#">Testimonials</a></li>
